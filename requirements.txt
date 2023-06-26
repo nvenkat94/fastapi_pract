@@ -28,6 +28,7 @@ fixtures==4.1.0
 futurist==2.4.1
 greenlet==2.0.2
 h11==0.14.0
+httpx==0.24.1
 idna==3.4
 importlib-metadata==6.7.0
 iniconfig==2.0.0
