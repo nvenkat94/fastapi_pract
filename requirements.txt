@@ -100,7 +100,6 @@ python-octaviaclient==3.4.0
 python-openstackclient==6.2.0
 python-swiftclient==4.3.0
 pytz==2023.3
-pywin32==306
 PyYAML==6.0
 repoze.lru==0.7
 requests==2.31.0
