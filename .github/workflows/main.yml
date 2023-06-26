@@ -3,7 +3,7 @@ name: First CI/CD
 on:
     push:
         branches:
-            - main
+            - master
 
 jobs:
     CI:
