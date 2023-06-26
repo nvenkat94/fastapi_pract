@@ -18,7 +18,6 @@ async def get_list():
             {'id':4,"name":'name4'},
             {'id':5,"name":'name5'}]
         return {'data':lis,'status':200}
-        # return json.dumps({'data':list,'status':200})
     except Exception as e:
         print('Error:',e)
         raise HTTPException(status_code=500)
@@ -30,7 +29,6 @@ async def get_detail(list_id):
             {'id':3,"name":'name3'},
             {'id':4,"name":'name4'},
             {'id':5,"name":'name5'}]
-    # print(type(list_id))
     match_dict=next((d for d in lis if str(d['id'])==list_id))
     print(match_dict)
     if len(match_dict)==0:
