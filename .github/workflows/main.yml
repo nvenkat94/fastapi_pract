@@ -1,0 +1,52 @@
+name: First CI/CD
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    CI:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            #step1
+            - name: Set up python
+              uses: actions/setup-python@v2
+              with:
+                python-version: 3.9
+            - name: Install virtual ENV
+              run: pip3 install virtualenv
+
+            - name: virtual ENV
+              uses: actions/cache@v2
+              id: cache-venv
+              with:
+                path: venv
+                key: ${{runner.os}}-venv-${{ hashFiles('**/requirements*.txt')}}
+                restore-keys: |
+                  ${{ runner.os }}-venv-
+            
+
+            - name: Activate virtual environment
+              run: python -m venv venv && source venv/bin/activate && pip3 install -r requirements.txt
+              if: steps.cache-venv.outputs.cache-hit != 'true'
+
+            - name: Run tests
+              run: . venv/bin/activate && pytest
+
+            - name: Create archive of dependencies
+              run: |
+                cd ./venv/lib/python3.9/site-packages
+                zip -r9 ../../../../api.zip .
+
+            - name: Add API files to Zip file
+              run: cd ./api && zip -g ../api.zip -r .
+
+            - name: Upload zip artifacts
+              uses: actions/upload-artifact@v2
+              with:
+                name: api_files
+                path: api.zip
+         
