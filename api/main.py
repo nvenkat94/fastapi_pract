@@ -1,9 +1,11 @@
 from fastapi import FastAPI,HTTPException
 from mangum import Mangum
 import json
+import api.sub_router as sub_router
 
 app=FastAPI()
 handler=Mangum(app)
+app.include_router(sub_router.router)
 
 @app.get('/')
 async def root():
