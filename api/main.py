@@ -1,7 +1,7 @@
 from fastapi import FastAPI,HTTPException
 from mangum import Mangum
 import json
-import sub_router as sub_router
+from api import sub_router as sub_router
 
 app=FastAPI()
 handler=Mangum(app)

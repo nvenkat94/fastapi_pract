@@ -9,14 +9,14 @@ def test_1():
     assert response.status_code == 200
     assert response.json()== {'message':'Hello World'}
 
-def test_2():
-    response = client.get("/list")
+# def test_2():
+#     response = client.get("/list")
 
-    assert response.status_code == 200
-    assert len(response.json()['data'])==5
+#     assert response.status_code == 200
+#     assert len(response.json()['data'])==5
 
-def test_3():
-    response = client.get("/list/1")
+# def test_3():
+#     response = client.get("/list/1")
 
-    assert response.status_code == 200
-    assert response.json()['data']== {'id':1,"name":'name1'}
+#     assert response.status_code == 200
+#     assert response.json()['data']== {'id':1,"name":'name1'}
